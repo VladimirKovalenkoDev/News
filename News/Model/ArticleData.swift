@@ -8,10 +8,24 @@
 
 import Foundation
 
-struct ArticleData : Codable {
+class ArticleData: Codable {
 
-       let title: String
-       let contet: String
-       let sourceName: String
-       let publishedAt: String
+    let articles:[Articles]
+    init(articles:[Articles]){
+        self.articles = articles
+    }
+    
+} 
+class Articles: Codable {
+    let title: String
+    let content: String
+    let publishedAt: String
+    // let source: [Source]
+    init(title:String ,content:String ,publishedAt: String){
+        self.title = title
+        self.content = content
+        self.publishedAt = publishedAt
+}
+//struct Source: Codable {
+//    let name: String
 }

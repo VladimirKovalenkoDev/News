@@ -2,7 +2,7 @@
 //  Article.swift
 //  News
 //
-//  Created by Владимир Коваленко on 16.06.2020.
+//  Created by Владимир Коваленко on 17.06.2020.
 //  Copyright © 2020 Vladimir Kovalenko. All rights reserved.
 //
 
@@ -11,9 +11,7 @@ struct Article  {
     
     let  titleName: String
     let  contetVieww: String
-    let  sourceNameArt: String
+    //let  sourceNameArt: String
     let publishedAtTime: String
-    
+   
 }
-
- 

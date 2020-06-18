@@ -8,25 +8,55 @@
 
 import UIKit
 
-class ViewController: UITableViewController {
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, ArticleManagerDelegate {
     
- var articleManager = ArticleManager()
+    func didUploadNews(_ articleManager: ArticleManager, article: Article) {
+        DispatchQueue.main.async {
+            self.newsTableView.reloadData()
+            
+        }
+    }
+    
+    func didFailWithError(error: Error) {
+        print(error)
+    }
+    
+    
+    
+    @IBOutlet var newsTableView: UITableView!
+    
+    var articleManager = ArticleManager()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //newsTableView.delegate = self
+        newsTableView.dataSource = self
+        articleManager.delegate = self
         articleManager.loadData()
+       
+        
     }
+
     
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+      
+     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print(articleManager.newsData.count)
+        return articleManager.newsData.count
     }
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return articleManager.data.count
-    }
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "I", for: indexPath)
+     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "TableViewCell", for: indexPath) as! TableViewCell
+        let article = articleManager.newsData[indexPath.row]
+        cell.timeTitleLabel.text = articleManager.newsData[indexPath.row].title
+        print(article)
         return cell 
     }
+    
+    
+    
+    
+   
     
 
 }
