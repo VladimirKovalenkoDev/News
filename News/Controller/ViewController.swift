@@ -8,56 +8,63 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, ArticleManagerDelegate {
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    func didUploadNews(_ articleManager: ArticleManager, article: Article) {
-        DispatchQueue.main.async {
-            self.newsTableView.reloadData()
-            
-        }
-    }
-    
-    func didFailWithError(error: Error) {
-        print(error)
-    }
-    
-    
-    
+    let url = URL(string: "https://newsapi.org/v2/everything?q=apple&sortBy=popularity&apiKey=b183697651ca46ab9f9978a8d2372f5e")
+    var articlesArray = [Articles]()
     @IBOutlet var newsTableView: UITableView!
-    
-    var articleManager = ArticleManager()
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        //newsTableView.delegate = self
+        newsTableView.delegate = self
         newsTableView.dataSource = self
-        articleManager.delegate = self
-        articleManager.loadData()
+        downloadData()
        
         
     }
+   
 
     
       
      func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(articleManager.newsData.count)
-        return articleManager.newsData.count
+        
+        return articlesArray.count
     }
      func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "TableViewCell", for: indexPath) as! TableViewCell
-        let article = articleManager.newsData[indexPath.row]
-        cell.timeTitleLabel.text = articleManager.newsData[indexPath.row].title
-        print(article)
+        cell.timeTitleLabel.text = articlesArray[indexPath.row].publishedAt
+        cell.upTitleLabel.text = articlesArray[indexPath.row].title
+        
         return cell 
     }
-    
-    
-    
-    
-   
-    
-
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "goToList", sender: self)
+    }
+  
 }
 
+// MARK: - parcing JSON & getting data
+extension ViewController {
+    
+      func downloadData() {
+          guard let downloadURL = url else { return }
+          URLSession.shared.dataTask(with: downloadURL) { data, urlResponse, error in
+              guard let data = data, error == nil, urlResponse != nil else {
+                  print("something is wrong")
+                  return
+              }
+              print("downloaded")
+              do
+              {
+                  let decoder = JSONDecoder()
+                  let decodeData = try decoder.decode(ArticleData.self, from: data)
+                self.articlesArray = decodeData.articles
+                  DispatchQueue.main.async {
+                      self.newsTableView.reloadData()
+                  }
+              } catch {
+                  print("something wrong after downloaded")
+              }
+          }.resume()
+      }
+   }
