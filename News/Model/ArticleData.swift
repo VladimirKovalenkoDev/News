@@ -8,15 +8,14 @@
 
 import Foundation
 
-class ArticleData: Codable {
+struct ArticleData: Codable {
 
     let articles:[Articles]
     init(articles:[Articles]){
         self.articles = articles
     }
-    
 } 
-class Articles: Codable {
+struct Articles: Codable {
     let title: String
     let content: String
     let publishedAt: String
@@ -25,7 +24,5 @@ class Articles: Codable {
         self.title = title
         self.content = content
         self.publishedAt = publishedAt
-}
-//struct Source: Codable {
-//    let name: String
+    }
 }

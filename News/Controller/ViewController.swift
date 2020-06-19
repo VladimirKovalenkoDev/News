@@ -18,7 +18,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         newsTableView.delegate = self
         newsTableView.dataSource = self
         downloadData()
-       
+        
         
     }
    
@@ -26,7 +26,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
       
      func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
+        print(articlesArray.count)
         return articlesArray.count
     }
      func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -39,9 +39,20 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: "goToList", sender: self)
+        
     }
-  
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+         if segue.identifier == "goToList" {
+            if let indexPath = newsTableView.indexPathForSelectedRow {
+                      let destinationVC = segue.destination as! NewsListViewController
+                destinationVC.articless = [articlesArray[indexPath.row]]
+            }
+        }
+      }
 }
+
+
 
 // MARK: - parcing JSON & getting data
 extension ViewController {
