@@ -12,16 +12,25 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     let url = URL(string: "https://newsapi.org/v2/everything?q=apple&sortBy=popularity&apiKey=b183697651ca46ab9f9978a8d2372f5e")
     var articlesArray = [Articles]()
+    let myRefreshControl : UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(refresh(sender:)) , for: .valueChanged)
+        return refreshControl
+    }()
+    
     @IBOutlet var newsTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
         newsTableView.delegate = self
         newsTableView.dataSource = self
         downloadData()
-        
+        newsTableView.refreshControl = myRefreshControl
         
     }
-   
+    @objc private func refresh(sender: UIRefreshControl){
+        newsTableView.reloadData()
+        sender.endRefreshing()
+    }
 
     
       

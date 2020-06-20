@@ -68,26 +68,42 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0WO-LB-g3K">
-                                <rect key="frame" x="20" y="309" width="374" height="33"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0WO-LB-g3K">
+                                <rect key="frame" x="0.0" y="479" width="414" height="26"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="26" id="tmz-vA-kxy"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1vx-ez-iDP">
-                                <rect key="frame" x="20" y="88" width="374" height="186"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="359"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Content" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WlN-wq-ujT">
-                                <rect key="frame" x="20" y="350" width="374" height="512"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" layoutMarginsFollowReadableWidth="YES" text="Content" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WlN-wq-ujT">
+                                <rect key="frame" x="0.0" y="513" width="414" height="349"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="349" id="yAe-Yg-UT6"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="WlN-wq-ujT" firstAttribute="bottom" secondItem="SPa-oA-tx8" secondAttribute="bottom" id="C42-L0-6bX"/>
+                            <constraint firstItem="0WO-LB-g3K" firstAttribute="trailing" secondItem="SPa-oA-tx8" secondAttribute="trailing" id="Dbu-jI-Ud9"/>
+                            <constraint firstItem="WlN-wq-ujT" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="vN4-aj-CK9" secondAttribute="trailing" id="H2B-V6-cXn"/>
+                            <constraint firstItem="0WO-LB-g3K" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="SPa-oA-tx8" secondAttribute="leading" id="JyL-c9-Rdl"/>
+                            <constraint firstItem="WlN-wq-ujT" firstAttribute="leading" secondItem="SPa-oA-tx8" secondAttribute="leading" id="Ln3-Q4-3wn"/>
+                            <constraint firstItem="0WO-LB-g3K" firstAttribute="trailing" secondItem="SPa-oA-tx8" secondAttribute="trailing" id="U6B-3M-UTX"/>
+                            <constraint firstItem="0WO-LB-g3K" firstAttribute="leading" secondItem="SPa-oA-tx8" secondAttribute="leading" id="VeS-Br-WA5"/>
+                            <constraint firstItem="WlN-wq-ujT" firstAttribute="top" secondItem="SPa-oA-tx8" secondAttribute="top" constant="425" id="YAl-It-WQi"/>
+                            <constraint firstItem="WlN-wq-ujT" firstAttribute="centerX" secondItem="vN4-aj-CK9" secondAttribute="centerX" id="Yzi-KH-q1I"/>
+                            <constraint firstItem="0WO-LB-g3K" firstAttribute="top" secondItem="SPa-oA-tx8" secondAttribute="top" constant="391" id="dWU-ns-Iqe"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="SPa-oA-tx8"/>
                     </view>
                     <navigationItem key="navigationItem" id="Tu4-jy-fLN"/>

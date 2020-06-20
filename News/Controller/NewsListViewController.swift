@@ -20,7 +20,8 @@ class NewsListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         mainTitle.text = article?.title
-        mainContent.text = article?.content
+        mainContent.text = article?.description
+        //print(mainContent.text)
         
         if let imageURL = URL(string: article!.urlToImage) {
                    DispatchQueue.global().async {

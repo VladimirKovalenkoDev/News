@@ -17,13 +17,13 @@ struct ArticleData: Codable {
 } 
 struct Articles: Codable {
     let title: String
-    let content: String
+    let description: String
     let publishedAt: String
     let urlToImage: String
     // let source: [Source]
     init(title:String ,content:String ,publishedAt: String, urlToImage:String){
         self.title = title
-        self.content = content
+        self.description = content
         self.publishedAt = publishedAt
         self.urlToImage = urlToImage
     }
