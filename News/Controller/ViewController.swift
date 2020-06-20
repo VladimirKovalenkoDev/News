@@ -39,6 +39,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: "goToList", sender: self)
+      
         
     }
 
@@ -46,7 +47,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
          if segue.identifier == "goToList" {
             if let indexPath = newsTableView.indexPathForSelectedRow {
                       let destinationVC = segue.destination as! NewsListViewController
-                destinationVC.articless = [articlesArray[indexPath.row]]
+                destinationVC.article = articlesArray[indexPath.row]
             }
         }
       }
