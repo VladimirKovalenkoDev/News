@@ -10,8 +10,7 @@ import UIKit
 
 class NewsListViewController: UIViewController {
 
-    @IBOutlet weak var articleImg: UIImageView!
-    @IBOutlet weak var mainContent: UILabel!
+    @IBOutlet weak var mainContent: UITextView!
     @IBOutlet weak var mainTitle: UILabel!
     var article:Articles?
     
@@ -21,8 +20,8 @@ class NewsListViewController: UIViewController {
         super.viewDidLoad()
         mainTitle.text = article?.title
         mainContent.text = article?.description
-        //print(mainContent.text)
-        
+       
+      /*
         if let imageURL = URL(string: article!.urlToImage) {
                    DispatchQueue.global().async {
                        let data = try? Data(contentsOf: imageURL)
@@ -36,6 +35,7 @@ class NewsListViewController: UIViewController {
                }
         
           }
+        */
      }
 }
     
