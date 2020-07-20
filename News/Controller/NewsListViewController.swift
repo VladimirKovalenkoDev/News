@@ -21,21 +21,6 @@ class NewsListViewController: UIViewController {
         mainTitle.text = article?.title
         mainContent.text = article?.description
        
-      /*
-        if let imageURL = URL(string: article!.urlToImage) {
-                   DispatchQueue.global().async {
-                       let data = try? Data(contentsOf: imageURL)
-                       if let data = data {
-                           let image = UIImage(data: data)
-                           DispatchQueue.main.async {
-                            self.articleImg.image = image
-                              
-                       }
-                   }
-               }
-        
-          }
-        */
      }
 }
     

@@ -32,7 +32,7 @@ class ViewController: UIViewController {
         categoryPicker.delegate = self
         categoryPicker.dataSource = self
         newsTableView.refreshControl = myRefreshControl
-         downloadData(with: "")
+         downloadData(with: "auto")
     }
     
     @objc private func refresh(sender: UIRefreshControl){
